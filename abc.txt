@@ -1,0 +1,47 @@
+代码提交
+代码提交一般有五个步骤：
+1.查看目前代码的修改状态
+2.查看代码修改内容
+3.暂存需要提交的文件
+4.提交已暂存的文件
+5.同步到服务器
+1.     查看目前代码的修改状态
+提交代码之前，首先应该检查目前所做的修改，运行git status命令
+a)        已暂存 （changes to be committed）
+new file //表示新建文件
+modified //表示修改文件
+deleted //表示删除文件
+b)       已修改 （changed but not updated）
+modified //表示修改文件
+deleted //表示删除文件
+另外，git 给出了可能需要的操作命令，git add/rm, gitcheckout --
+c)        未跟踪 （untracked files）
+2.     查看代码修改的内容
+ git diff  <file>
+比较某文件与最近提交节点的差异。
+注意：如果该文件已暂存，那么应该使用git diff –cached<file>
+ 
+ git diff <hashcode> <hashcode>  <file>
+比较某文件在提交节点a，节点b的差异。
+技巧：如果省略后面一个hashcode，则默认表示与上一提交节点比较。（也可以利用^运算符）
+ 
+3.     暂存需要提交的文件
+如果是新建的文件
+则git add  <file>
+如果是修改的文件
+则git add  <file>
+如果是删除的文件
+则 git rm  <file>
+4.     提交已暂存的文件
+git commit
+注意注释填写规范。
+git commit --amend
+修改最近一次提交。有时候如果提交注释书写有误或者漏提文件，可以使用此命令。
+5.     同步到服务器
+同步到服务器前先需要将服务器代码同步到本地
+命令： git pull
+如果执行失败，就按照提示还原有冲突的文件，然后再次尝试同步。
+命令：git checkout -- <有冲突的文件路径>
+同步到服务器
+命令： git push origin  <本地分支名>
+如果执行失败，一般是没有将服务器代码同步到本地导致的，先执行上面的git pull命令。
